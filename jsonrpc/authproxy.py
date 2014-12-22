@@ -1,3 +1,3 @@
-from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
+from darkcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 
 __all__ = ['AuthServiceProxy', 'JSONRPCException']
