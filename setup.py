@@ -2,14 +2,14 @@
 
 from distutils.core import setup
 
-setup(name='python-darkcoinrpc',
-      version='0.1',
-      description='Enhanced version of python-jsonrpc for use with Darkcoin',
+setup(name='python-dashrpc',
+      version='0.2',
+      description='Enhanced version of python-jsonrpc for use with Dash',
       long_description=open('README').read(),
       author='Jeff Garzik',
       author_email='<jgarzik@exmulti.com>',
-      maintainer='Vertoe Qhor',
-      maintainer_email='<vertoe@qhor.net>',
-      url='http://www.github.com/vertoe/python-darkcoinrpc',
-      packages=['darkcoinrpc'],
+      maintainer='Jeff Hodges',
+      maintainer_email='<jeff@jeffhq.com>',
+      url='http://www.github.com/MindhiveCode/python-dashrpc',
+      packages=['dashrpc'],
       classifiers=['License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)', 'Operating System :: OS Independent'])

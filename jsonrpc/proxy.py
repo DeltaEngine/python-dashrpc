@@ -1,1 +1,1 @@
-from darkcoinrpc.authproxy import AuthServiceProxy as ServiceProxy, JSONRPCException
+from dashrpc.authproxy import AuthServiceProxy as ServiceProxy, JSONRPCException

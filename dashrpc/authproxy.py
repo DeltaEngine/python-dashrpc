@@ -38,10 +38,12 @@ try:
     import http.client as httplib
 except ImportError:
     import httplib
+
 import base64
 import decimal
 import json
 import logging
+
 try:
     import urllib.parse as urlparse
 except ImportError:
