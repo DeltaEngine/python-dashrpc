@@ -22,7 +22,7 @@ Installation:
 
 - This library has only been tested in Python2
   - With Python3 you mostly will run into this issue: https://stackoverflow.com/questions/33520423/python-error-typeerror-getsockaddrarg-af-inet-address-must-be-tuple-not-int/33520658
-  - Instead check out https://github.com/DeltaEngine/python-dashlib
+  - Instead check out https://github.com/DeltaEngine/pycoin and https://github.com/DeltaEngine/pybitcointools
 - python setup.py install
 
 Example usage:
