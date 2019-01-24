@@ -1,3 +1,6 @@
+python-dashrpc -- Python2 interface to Dash's JSON-RPC API
+=====================================
+
 AuthServiceProxy is an improved version of python-jsonrpc.
 
 It includes the following generic improvements:
@@ -9,7 +12,7 @@ It includes the following generic improvements:
 - can optionally log all RPC calls and results
 - JSON-2.0 batch support
 
-It also includes the following darkcoin-specific details:
+It also includes the following dash-specific details:
 
 - sends Basic HTTP authentication headers
 - parses all JSON numbers that look like floats as Decimal,
@@ -17,40 +20,25 @@ It also includes the following darkcoin-specific details:
 
 Installation:
 
-- change the first line of setup.py to point to the directory of your installation of python 2.*
-- run setup.py
-
-Note: This will only install darkcoinrpc. If you also want to install jsonrpc to preserve
-backwards compatibility, you have to replace 'darkcoinrpc' with 'jsonrpc' in setup.py and run it again.
+- This library has only been tested in Python2
+  - With Python3 you mostly will run into this issue: https://stackoverflow.com/questions/33520423/python-error-typeerror-getsockaddrarg-af-inet-address-must-be-tuple-not-int/33520658
+  - Instead check out https://github.com/DeltaEngine/python-dashlib
+- python setup.py install
 
 Example usage:
 
-    from darkcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
+```
+from dashrpc.authproxy import AuthServiceProxy, JSONRPCException
 
-    # rpc_user and rpc_password are set in the darkcoin.conf file
-    rpc_connection = AuthServiceProxy("http://%s:%s@127.0.0.1:9998"%(rpc_user, rpc_password))q
-    best_block_hash = rpc_connection.getbestblockhash()
-    print(rpc_connection.getblock(best_block_hash))
+#check dash.conf for settings
+rpcuser = "TestDash"
+rpcpassword = "LocalOnly"
+rpcip = "127.0.0.1"
+rpcport = 19998 #19998 for testnet, 9998 for mainnet
+rpc_params = "http://%s:%s@%s:%s"%(rpcuser, rpcpassword, rpcip, rpcport)
+rpc = AuthServiceProxy(rpc_params)
+print(rpc.getinfo())
 
-    # batch support : print timestamps of blocks 0 to 99 in 2 RPC round-trips:
-    commands = [ [ "getblockhash", height] for height in range(100) ]
-    block_hashes = rpc_connection.batch_(commands)
-    blocks = rpc_connection.batch_([ [ "getblock", h ] for h in block_hashes ])
-    block_times = [ block["time"] for block in blocks ]
-    print(block_times)
-
-Logging all RPC calls to stderr:
-
-    from darkcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
-    import logging
-
-    logging.basicConfig()
-    logging.getLogger("DarkcoinRPC").setLevel(logging.DEBUG)
-
-    rpc_connection = AuthServiceProxy("http://%s:%s@127.0.0.1:9998"%(rpc_user, rpc_password))
-    print(rpc_connection.getinfo())
-
-Produces output on stderr like:
-
-    DEBUG:DarkcoinRPC:-1-> getinfo []
-    DEBUG:DarkcoinRPC:<-1- {"connections": 8, ...etc }
+best_block_hash = rpc.getbestblockhash()
+print(rpc.getblock(best_block_hash))
+```
