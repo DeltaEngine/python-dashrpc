@@ -1,5 +1,4 @@
-python-dashrpc -- Python2 interface to Dash's JSON-RPC API
-=====================================
+# python-dashrpc -- Python2 interface to Dash's JSON-RPC API
 
 AuthServiceProxy is an improved version of python-jsonrpc.
 
